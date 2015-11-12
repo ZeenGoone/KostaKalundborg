@@ -1,5 +1,8 @@
 package tenancy;
 
-public class Tent {
-
+public class Tent extends Tenancy{
+	
+	public Tent(int id) {
+		super(id);
+	}
 }
