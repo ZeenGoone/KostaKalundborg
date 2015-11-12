@@ -10,15 +10,14 @@ public class LoginLogic {
 	DatabaseLogic databaselogic;
 	private ArrayList<Receptionist> receptionistlist = new ArrayList<Receptionist>();
 	private ArrayList<CampChief> campchieflist = new ArrayList<CampChief>();
-	
+
 	public LoginLogic(ArrayList<CampChief> campchieflist, ArrayList<Receptionist> receptionistlist){
 		this.campchieflist = campchieflist;
 		this.receptionistlist = receptionistlist;
 	}
-	
-	
+
 	public Employee verifyUser( String phonenumber, String password){
-		
+
 		for(Receptionist r : receptionistlist){
 			if(phonenumber == r.getPhonenumber() && password == r.getPassword())
 				return r;
@@ -26,9 +25,8 @@ public class LoginLogic {
 		for(CampChief c : campchieflist){
 			if(phonenumber == c.getPhonenumber() && password == c.getPassword()){
 				return c;
+			}
 		}
+		return null;
 	}
-	return null;
-}
-		
 }
