@@ -18,20 +18,7 @@ public class DatabaseLogic {
 	DatabaseLogic(){
 		
 	}
-	public static void main(String[] args){
-		for(Customer c:getCustomers()){
-			System.out.print("kunde id: " + c.getPhonenumber() + " ");
-			System.out.println("kunde navn: " + c.getName());
-		}
-		System.out.println("Tilføjer nu kunden 12121212-id og Henning Poulsen-name");
-		Customer temp = new Customer("Henning Poulsen", "12121212");
-		saveCustomer(temp);
-		System.out.println("Nu ser vi om den er blevet tilføjet");
-		for(Customer c:getCustomers()){
-			System.out.print("kunde id: " + c.getPhonenumber() + " ");
-			System.out.println("kunde navn: " + c.getName());
-		}
-	}
+
 	public static void saveCustomer(Customer customer){
 		customerBase = getCustomers();
 		boolean testCustomer = false;
