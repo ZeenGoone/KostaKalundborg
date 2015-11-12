@@ -9,7 +9,7 @@ public class InvoiceLogic {
 	public String getInvoice(Customer customer) {
 		String invoiceFinal = "";
 		for (int i=0; customer.invoices.get(customer.currentInvoice).payments.size()>i; i++) {
-			invoiceFinal += (i+1)+": "+customer.invoices.get(customer.currentInvoice).payments.get(i).toString() + "\n";
+			invoiceFinal += (i+1)+": "+customer.invoices.get(customer.currentInvoice).payments.get(i).toString()+"kr." + "\n";
 		}
 		return "Customer: "+customer.getName()+"\t Phonenumber: "+customer.getPhonenumber()+
 				"\n"+invoiceFinal+"\n \n"+
