@@ -36,6 +36,7 @@ public class GUI extends JFrame{
 		new GUI();
 	}
 	private void testLogin(){
+		panel.setBackground(Color.YELLOW);
 		JPanel panel_1 = new JPanel();
 		panel_1.setMaximumSize(new Dimension(200,200));
 		panel_1.setBackground(Color.BLUE);
