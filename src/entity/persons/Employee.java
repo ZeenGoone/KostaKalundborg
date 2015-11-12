@@ -9,4 +9,8 @@ public abstract class Employee extends Person{
 		this.password=password;
 	}
 	
+	public String  getPassword () { return password; 
+			
+	}
+	
 }
