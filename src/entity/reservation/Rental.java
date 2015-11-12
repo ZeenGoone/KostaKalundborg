@@ -8,8 +8,8 @@ public class Rental extends Reservation {
 	
 	// Customer customer = new Customer(name, phonenumber);
 	//Tenancy
-	String startDate; // in format ddmmyyyy
-	String endDate;   // in format ddmmyyyy
+	String startDate; // in format yyyymmdd
+	String endDate;   // in format yyyymmdd
 	
 	
 	Rental (){
@@ -33,6 +33,52 @@ public class Rental extends Reservation {
 	
 	}
 	
+	public void checkStartDate (){
+		String y = startDate.substring(0, 4);
+		int year = 0;
+		String m = startDate.substring(5,6);
+		int month = 0;
+		String d = startDate.substring(7,8);
+		int day= 0;
+			
+		try {
+				year = Integer.parseInt(y);
+				
+			} catch (NumberFormatException e){
+				System.err.println("Wrong start year format");
+				
+			}
 	
+		try {
+		
+			month = Integer.parseInt(m);
+			
+		} catch (NumberFormatException e){
+			System.err.println("Wrong start month format");
+			
+		}
+		
+		try {
+			day = Integer.parseInt(d);
+			
+		} catch (NumberFormatException e){
+			System.err.println("Wrong start day format");
+			
+		}
+		
+		if (year>1900 && year<2100){
+			System.out.println("Wrong year");
+				
+		}
+		else if (month<0 && month>12){
+			System.out.println("Wrong month");
+			
+		}
+		
+		else if(day<0 && day>31){ 
+			System.out.println("Wrong day");
+		}
+	
+	}
 	
 }
