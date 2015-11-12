@@ -79,6 +79,13 @@ public class Rental extends Reservation {
 			System.out.println("Wrong day");
 		}
 	
+		else if((month == 4 ||month == 6 ||month == 9 || month ==11 )&& (day>30)) { 
+			System.out.println("Wrong day");
+		}
+		
+		else if ((month==2 && year%4 !=0 && day>28) || (month==2 && year%4==0 && day>29)){
+			System.out.println("Wrong day");
+		}
 	}
 	
 }
