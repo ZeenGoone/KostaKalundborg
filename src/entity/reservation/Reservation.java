@@ -1,5 +1,7 @@
 package entity.reservation;
 
-public class Reservation {
+public abstract class Reservation {
 
+	
+	
 }
