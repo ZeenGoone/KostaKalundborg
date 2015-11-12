@@ -1,5 +1,8 @@
 package entity.reservation;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import entity.persons.Customer;
 
 public class Rental extends Reservation {
@@ -33,7 +36,7 @@ public class Rental extends Reservation {
 	
 	}
 	
-	public void checkStartDate (){
+/*	public void checkStartDate (){
 		String y = startDate.substring(0, 4);
 		int year = 0;
 		String m = startDate.substring(5,6);
@@ -85,6 +88,28 @@ public class Rental extends Reservation {
 		
 		else if ((month==2 && year%4 !=0 && day>28) || (month==2 && year%4==0 && day>29)){
 			System.out.println("Wrong day");
+		}
+	}
+	*/
+	public boolean isValidStartDate (String startDate){
+		
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		try{
+			df.parse(startDate);
+			return true;
+		} catch (ParseException e) {
+			return false;
+		}
+		
+	}
+	
+	public boolean isValidEndDate (String endDate){
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd");
+		try{
+			df.parse(endDate);
+			return true;
+		} catch (ParseException e) {
+			return false;
 		}
 	}
 	
