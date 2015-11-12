@@ -69,6 +69,12 @@ public class DatabaseLogic {
 	}
 	public static ArrayList<CampChief> getCampChief(){
 		campchiefBase = readFile("campchief");
+		ArrayList<CampChief> tempDB = campchiefBase;
+		for(CampChief c:tempDB){
+			if(!c.getAdministrator()){
+				
+			}
+		}
 		return campchiefBase;
 	}
 	private static ArrayList readFile(String type){
@@ -82,7 +88,17 @@ public class DatabaseLogic {
 			br = new BufferedReader(new FileReader(dbFile));
 			while ((input = br.readLine()) != null) {
 				String[] tempDBspot = input.split(csvType);
-				tempDB.add(new Customer(tempDBspot[1], tempDBspot[0]));
+				switch(type){
+				case "customer":
+					tempDB.add(addCustomer(tempDBspot));
+					break;
+				case "receptionist":
+					tempDB.add(addReceptionist(tempDBspot));
+					break;
+				case "campchief":
+					tempDB.add(addCampChief(tempDBspot));
+					break;
+				}
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -98,6 +114,16 @@ public class DatabaseLogic {
 			}
 		}
 		return tempDB;
+	}
+	private static Customer addCustomer(String[] s){
+		return new Customer(s[1], s[0]);
+		
+	}
+	private static Receptionist addReceptionist(String[] s){
+		return new Receptionist(s[1], s[0], s[2]);
+	}
+	private static CampChief addCampChief(String[] s){
+		return new CampChief(s[1], s[0], s[2], Boolean.getBoolean(s[3]));
 	}
 	private static void writeFile(String type){
 		
