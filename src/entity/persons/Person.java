@@ -1,6 +1,6 @@
 package entity.persons;
 
-public class Person {
+public abstract class Person {
 	protected String phonenumber;
 	protected String name;
 	

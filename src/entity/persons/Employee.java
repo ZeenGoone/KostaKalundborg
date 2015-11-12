@@ -1,6 +1,6 @@
 package entity.persons;
 
-public class Employee extends Person{
+public abstract class Employee extends Person{
 
 	public String password;
 	
