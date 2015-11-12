@@ -10,6 +10,7 @@ public class Customer extends Person {
 		super(name, phonenumber);
 		invoices = new ArrayList<Invoice>();
 		currentInvoice=0;
+		invoices.add(new Invoice());
 	}
 	
 	
