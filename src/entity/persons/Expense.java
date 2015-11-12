@@ -11,5 +11,12 @@ public class Expense {
 	public String toString() {
 		return describtion+": "+price;
 	}
+	public String getDescribtion() {
+		return describtion;
+	}
+	public double getPrice() {
+		return price;
+	}
+	
 
 }
