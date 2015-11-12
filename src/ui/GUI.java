@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import entity.persons.Customer;
+import logic.DatabaseLogic;
 import logic.InvoiceLogic;
 
 public class GUI extends JFrame{
@@ -35,7 +36,7 @@ public class GUI extends JFrame{
 	public static void main(String[] args) {
 		new GUI();
 	}
-	private void setViewLogin(){
+	public void setViewLogin(){
 		panel.setBackground(Color.WHITE);
 		JPanel panel_1 = new JPanel();
 		panel_1.setMaximumSize(new Dimension(300,200));
@@ -55,6 +56,11 @@ public class GUI extends JFrame{
 		panel_1.add(textfield_password);
 		panel_1.add(button_login);
 		panel.add(panel_1);
+	}
+	
+	public void setViewMain() {
+		panel.setBackground(Color.WHITE);
+		DatabaseLogic DL = new DatabaseLogic();
 	}
 	
 	private void testInvoice() {
