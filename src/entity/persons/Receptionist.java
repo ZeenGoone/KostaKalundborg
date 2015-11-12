@@ -1,4 +1,4 @@
-package persons;
+package entity.persons;
 
 public class Receptionist extends Employee {
 

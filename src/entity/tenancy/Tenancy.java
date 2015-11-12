@@ -1,4 +1,4 @@
-package tenancy;
+package entity.tenancy;
 
 public abstract class Tenancy {
 	protected int id;

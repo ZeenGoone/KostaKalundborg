@@ -1,4 +1,4 @@
-package tenancy;
+package entity.tenancy;
 
 public class Caravan extends Tenancy{
 	public Caravan(int id) {

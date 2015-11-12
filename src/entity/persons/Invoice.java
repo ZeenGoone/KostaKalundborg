@@ -1,4 +1,4 @@
-package persons;
+package entity.persons;
 
 import java.util.ArrayList;
 

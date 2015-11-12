@@ -1,4 +1,4 @@
-package tenancy;
+package entity.tenancy;
 
 public class Tent extends Tenancy{
 	
