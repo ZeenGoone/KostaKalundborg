@@ -8,4 +8,7 @@ public abstract class Person {
 		this.name=name; 
 		this.phonenumber=phonenumber; 
 	}
+
+	public String getPhonenumber() {return phonenumber;}
+	public String getName() {return name;}
 }
