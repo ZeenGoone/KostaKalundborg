@@ -65,6 +65,13 @@ public class DatabaseLogic {
 	}
 	public static ArrayList<Receptionist> getReceptionist(){
 		receptionistBase = readFile("receptionist");
+		ArrayList<Receptionist> tempDB = receptionistBase;
+		for(Receptionist r:tempDB){
+			if(r.getAdministrator()){
+				tempDB.remove(r);
+			}
+		}
+		receptionistBase = tempDB;
 		return receptionistBase;
 	}
 	public static ArrayList<CampChief> getCampChief(){
@@ -72,9 +79,10 @@ public class DatabaseLogic {
 		ArrayList<CampChief> tempDB = campchiefBase;
 		for(CampChief c:tempDB){
 			if(!c.getAdministrator()){
-				
+				tempDB.remove(c);
 			}
 		}
+		campchiefBase = tempDB;
 		return campchiefBase;
 	}
 	private static ArrayList readFile(String type){
