@@ -19,4 +19,8 @@ public abstract class Employee extends Person{
 	
 	
 	
+	public String  getPassword () { return password; 
+			
+	}
+	
 }
