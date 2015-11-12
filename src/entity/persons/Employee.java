@@ -1,12 +1,12 @@
 package entity.persons;
 
-public class Employee {
+public class Employee extends Person{
 
-	public String id;
 	public String password;
 	
-	Employee (String name, String id, String password){
-		
+	Employee (String name, String phonenumber, String password){
+		super(phonenumber, name);
+		this.password=password;
 	}
 	
 }

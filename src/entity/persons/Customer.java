@@ -3,12 +3,11 @@ package entity.persons;
 import java.util.ArrayList;
 
 public class Customer extends Person {
-
-	public int phonenumber;
-	ArrayList Invoice = new ArrayList();
+	private ArrayList<Invoice> invoices;
 	
-	Customer (String  name, int phonenumber){
-		
+	Customer (String  name, String phonenumber){
+		super(name, phonenumber);
+		invoices = new ArrayList<Invoice>();
 	}
 	
 }
