@@ -1,7 +1,12 @@
 package persons;
 
-public class Invoice {
+import java.util.ArrayList;
 
-	Invoice ()
+public class Invoice {
+	public ArrayList<Expense> payments;
+	public Invoice(){ payments = new ArrayList<Expense>();}
 	
+	public void registerExpense(String describtion, double price) {
+		payments.add(new Expense(describtion, price));
+	}
 }
