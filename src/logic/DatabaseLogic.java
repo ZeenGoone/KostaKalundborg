@@ -15,7 +15,7 @@ public class DatabaseLogic {
 	static ArrayList<CampChief> campchiefBase;
 	static ArrayList<Receptionist> receptionistBase;
 	
-	DatabaseLogic(){
+	public DatabaseLogic(){
 		
 	}
 
