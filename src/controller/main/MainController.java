@@ -15,9 +15,9 @@ public class MainController {
 	static LoginLogic login = new LoginLogic(campchiefdb, receptionistdb);
 	
 	public static void main(String[] args) {
-
 		
-
+		
+		
 	}
 
 }
