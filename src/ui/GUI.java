@@ -28,26 +28,26 @@ public class GUI extends JFrame{
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// testInvoice();
-		testLogin();
+		setViewLogin();
 		add(panel);
 		setVisible(true);
 	}
 	public static void main(String[] args) {
 		new GUI();
 	}
-	private void testLogin(){
-		panel.setBackground(Color.YELLOW);
+	private void setViewLogin(){
+		panel.setBackground(Color.WHITE);
 		JPanel panel_1 = new JPanel();
-		panel_1.setMaximumSize(new Dimension(200,200));
+		panel_1.setMaximumSize(new Dimension(300,200));
 		panel_1.setBackground(Color.BLUE);
 		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		Font font_italic = new Font("Serif", Font.ITALIC, 6);
-		Font font_bold = new Font("Serif", Font.BOLD, 12);
+		Font font_italic = new Font("Serif", Font.ITALIC, 20);
+		Font font_bold = new Font("Serif", Font.PLAIN, 30);
 		textfield_phonenumber.setFont(font_italic);
 		textfield_password.setFont(font_italic);
 		button_login.setFont(font_bold);
-		textfield_phonenumber.setColumns(30);
-		textfield_password.setColumns(30);
+		textfield_phonenumber.setColumns(20);
+		textfield_password.setColumns(20);
 		textfield_phonenumber.setAlignmentX(CENTER_ALIGNMENT);
 		textfield_password.setAlignmentX(CENTER_ALIGNMENT);
 		button_login.setAlignmentX(CENTER_ALIGNMENT);
