@@ -45,6 +45,32 @@ public class DatabaseLogic {
 			writeFile("customer");
 		}
 	}
+	public static void saveCampChief(CampChief campchief){
+		campchiefBase = getCampChief();
+		boolean testCampChief = false;
+		for(CampChief c:campchiefBase){
+			if(c.getPhonenumber().equals(campchief.getPhonenumber())){
+				testCampChief = true;
+			}
+		}
+		if(!testCampChief){
+			campchiefBase.add(campchief);
+			writeFile("campchief");
+		}
+	}
+	public static void saveReceptionist(Receptionist receptionist){
+		receptionistBase = getReceptionist();
+		boolean testReceptionist = false;
+		for(Receptionist r:receptionistBase){
+			if(r.getPhonenumber().equals(receptionist.getPhonenumber())){
+				testReceptionist = true;
+			}
+		}
+		if(!testReceptionist){
+			receptionistBase.add(receptionist);
+			writeFile("receptionist");
+		}
+	}
 	
 	public static ArrayList<Customer> getCustomers(){
 		customerBase = readFile("customer");
