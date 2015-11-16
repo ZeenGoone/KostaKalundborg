@@ -3,6 +3,8 @@ package ui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -17,6 +19,10 @@ import logic.InvoiceLogic;
 
 public class GUI extends JFrame{
 	JPanel panel = new JPanel();
+	JPanel panel_main1 = new JPanel();
+	JPanel panel_main2 = new JPanel();
+	ArrayList<JButton> tenancyButtons;
+	
 	JButton button1 = new JButton("Make Reservation");
 	JButton button2 = new JButton("Print Invoice");
 	JButton button_login = new JButton("Login");
@@ -29,9 +35,6 @@ public class GUI extends JFrame{
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		// testInvoice();
-		setViewLogin();
-		add(panel);
-		setVisible(true);
 	}
 	public static void main(String[] args) {
 		new GUI();
@@ -58,9 +61,29 @@ public class GUI extends JFrame{
 		panel.add(panel_1);
 	}
 	
-	public void setViewMain() {
-		panel.setBackground(Color.WHITE);
-		DatabaseLogic DL = new DatabaseLogic();
+	public void setViewMain(ArrayList<Integer> caravans, ArrayList<Integer> tents , 
+			ArrayList<Integer> huts, ArrayList<Integer> luxuryhuts ) {
+		panel_main1.setBackground(Color.WHITE);
+		int largestAmmount = 0;
+		int[] emptyButtonsAmmount = new int[4];
+		if (caravans.size()>largestAmmount) largestAmmount=caravans.size();
+		if (tents.size()>largestAmmount) largestAmmount=tents.size();
+		if (huts.size()>largestAmmount) largestAmmount=huts.size();
+		if (luxuryhuts.size()>largestAmmount) largestAmmount=luxuryhuts.size();
+//		emptyButtonsAmmount[0] = largestAmmount - caravans.size();
+//		emptyButtonsAmmount[1] = largestAmmount - tents.size();
+//		emptyButtonsAmmount[2] = largestAmmount - huts.size();
+//		emptyButtonsAmmount[3] = largestAmmount - luxuryhuts.size();
+		panel_main2.setLayout(new GridLayout(largestAmmount, 4));
+		tenancyButtons = new ArrayList<JButton>();
+		for (int temp: caravans){ tenancyButtons.add(new JButton(""+temp));}
+		for (int temp: tents){ tenancyButtons.add(new JButton(""+temp));}
+		for (int temp: huts){ tenancyButtons.add(new JButton(""+temp));}
+		for (int temp: luxuryhuts){ tenancyButtons.add(new JButton(""+temp));}
+		for (JButton temp: tenancyButtons) {panel_main2.add(temp); }
+		panel_main1.add(panel_main2);
+		add(panel_main1);
+		setVisible(true);
 	}
 	
 	private void testInvoice() {
