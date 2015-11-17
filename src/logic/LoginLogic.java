@@ -4,10 +4,8 @@ import java.util.ArrayList;
 import entity.persons.CampChief;
 import entity.persons.Employee;
 import entity.persons.Receptionist;
-import logic.DatabaseLogic;
 
 public class LoginLogic {
-	DatabaseLogic databaselogic;
 	private ArrayList<Receptionist> receptionistlist = new ArrayList<Receptionist>();
 	private ArrayList<CampChief> campchieflist = new ArrayList<CampChief>();
 
@@ -16,7 +14,7 @@ public class LoginLogic {
 		this.receptionistlist = receptionistlist;
 	}
 
-	public Employee verifyUser( String phonenumber, String password){
+	public Employee verifyUser(String phonenumber, String password){
 
 		for(Receptionist r : receptionistlist){
 			if(phonenumber == r.getPhonenumber() && password == r.getPassword())

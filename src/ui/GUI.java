@@ -37,7 +37,7 @@ public class GUI extends JFrame{
 	JTextField textfield_password = new JTextField("password");
 	public GUI() {
 		super("Kosta Kalundborg");
-		setSize(500,700);
+		setSize(1000,700);
 		setResizable(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}

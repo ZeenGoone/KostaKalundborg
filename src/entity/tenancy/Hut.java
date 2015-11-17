@@ -2,8 +2,6 @@ package entity.tenancy;
 
 public class Hut extends Tenancy{
 
-	public Hut(int id) {
-		super(id);
-	}
+	public Hut(int id) {super(id);}
 	
 }
