@@ -53,7 +53,7 @@ public class GUI extends JFrame{
 	JTextField textfield_password = new JTextField("password");
 	public GUI() {
 		super("Kosta Kalundborg");
-		setSize(1300, 700);
+		setSize(1250, 700);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -65,7 +65,7 @@ public class GUI extends JFrame{
 			temp.setBackground(Color.decode(color_caravan));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
-//            temp.setOpaque(true);
+            temp.setOpaque(true);
 			caravanButtons.add(temp);
 			}
 		for (JButton temp: caravanButtons){panel_caravanList.add(temp);}
@@ -78,7 +78,7 @@ public class GUI extends JFrame{
 			temp.setBackground(Color.decode(color_tent));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
-//            temp.setOpaque(true);
+            temp.setOpaque(true);
 			tentButtons.add(temp);
 			}
 		for (JButton temp: tentButtons){panel_tentList.add(temp);}
@@ -91,7 +91,7 @@ public class GUI extends JFrame{
 			temp.setBackground(Color.decode(color_hut));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
-//            temp.setOpaque(true);
+            temp.setOpaque(true);
 			hutButtons.add(temp);
 			}
 		for (JButton temp: hutButtons){panel_hutList.add(temp);}
@@ -104,7 +104,7 @@ public class GUI extends JFrame{
 			temp.setBackground(Color.decode(color_luxuryhut));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(true);
-//            temp.setOpaque(true);
+            temp.setOpaque(true);
 			luxuryhutButtons.add(temp);
 			}
 		for (JButton temp: luxuryhutButtons){panel_luxuryhutList.add(temp);}
@@ -122,6 +122,7 @@ public class GUI extends JFrame{
 		panel_mainBottom.add(panel_hutField);
 		panel_mainBottom.add(panel_luxuryhutField);
 		panel.setMaximumSize(new Dimension(1200, 700));
+		panel_mainBottom.repaint();
 		panel.add(panel_mainTop);
 		panel.add(panel_mainBottom);
 		add(panel);
@@ -140,6 +141,8 @@ public class GUI extends JFrame{
 		panel_tentField.setLayout(new BoxLayout(panel_tentField, BoxLayout.Y_AXIS));
 		panel_hutField.setLayout(new BoxLayout(panel_hutField, BoxLayout.Y_AXIS));
 		panel_luxuryhutField.setLayout(new BoxLayout(panel_luxuryhutField, BoxLayout.Y_AXIS));
+		panel_mainBottom.setBackground(Color.GRAY);
+		panel_mainBottom.setOpaque(true);
 		panel_caravanField.setAlignmentY(TOP_ALIGNMENT);
 		panel_tentField.setAlignmentY(TOP_ALIGNMENT);
 		panel_hutField.setAlignmentY(TOP_ALIGNMENT);
