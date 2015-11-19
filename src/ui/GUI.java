@@ -19,15 +19,27 @@ import logic.InvoiceLogic;
 
 public class GUI extends JFrame{
 	JPanel panel = new JPanel();
-	JPanel panel_main1 = new JPanel();
+	JPanel panel_mainBottom = new JPanel();
+	JPanel panel_mainTop = new JPanel();
 	JPanel panel_caravanList = new JPanel();
 	JPanel panel_tentList = new JPanel();
 	JPanel panel_hutList = new JPanel();
 	JPanel panel_luxuryhutList = new JPanel();
+	JPanel panel_caravanField = new JPanel();
+	JPanel panel_tentField = new JPanel();
+	JPanel panel_hutField = new JPanel();
+	JPanel panel_luxuryhutField = new JPanel();
+	JTextField textfield_caravans = new JTextField("Campingvogne");
+	JTextField textfield_tents = new JTextField("Telte");
+	JTextField textfield_huts = new JTextField("Hytter");
+	JTextField textfield_luxuryhuts = new JTextField("Luksus Hytter");
 	ArrayList<JButton> caravanButtons;
 	ArrayList<JButton> tentButtons;
 	ArrayList<JButton> hutButtons;
 	ArrayList<JButton> luxuryhutButtons;
+	Font font_titles = new Font(Font.DIALOG, Font.BOLD, 20);
+	Font font_buttons = new Font("Serif", Font.BOLD, 15);
+	
 	
 	JButton button1 = new JButton("Make Reservation");
 	JButton button2 = new JButton("Print Invoice");
@@ -42,7 +54,7 @@ public class GUI extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	public void setCaravanList(ArrayList<Integer> caravans) {
-		panel_caravanList.setLayout(new GridLayout(caravans.size(),1));
+		panel_caravanList.setLayout(new GridLayout(caravans.size(),15));
 		caravanButtons = new ArrayList<JButton>();
 		for (int index:caravans){ 
 			JButton temp = new JButton(Integer.toString(index));
@@ -71,6 +83,7 @@ public class GUI extends JFrame{
 		for (int index:huts){ 
 			JButton temp = new JButton(Integer.toString(index));
 			temp.setBackground(Color.decode("#820820"));
+			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
             temp.setOpaque(true);
 			hutButtons.add(temp);
@@ -83,20 +96,45 @@ public class GUI extends JFrame{
 		for (int index:luxuryhuts){ 
 			JButton temp = new JButton(Integer.toString(index));
 			temp.setBackground(Color.decode("#9b394c"));
-			temp.setContentAreaFilled(false);
+			temp.setContentAreaFilled(true);
             temp.setOpaque(true);
 			luxuryhutButtons.add(temp);
 			}
 		for (JButton temp: luxuryhutButtons){panel_luxuryhutList.add(temp);}
 	}
 	public void finish() {
-		panel_main1.add(panel_caravanList);
-		panel_main1.add(panel_tentList);
-		panel_main1.add(panel_hutList);
-		panel_main1.add(panel_luxuryhutList);
-		add(panel_main1);
+		panel_caravanField.add(panel_caravanList);
+		panel_tentField.add(panel_tentList);
+		panel_hutField.add(panel_hutList);
+		panel_luxuryhutField.add(panel_luxuryhutList);
+		panel_mainBottom.add(panel_caravanField);
+		panel_mainBottom.add(panel_tentField);
+		panel_mainBottom.add(panel_hutField);
+		panel_mainBottom.add(panel_luxuryhutField);
+		add(panel_mainTop);
+		add(panel_mainBottom);
 		setVisible(true);
 	}
+	public void before() {
+		textfield_caravans.setFont(font_titles);
+		textfield_tents.setFont(font_titles);
+		textfield_huts.setFont(font_titles);
+		textfield_luxuryhuts.setFont(font_titles);
+		textfield_caravans.setEditable(false);
+		textfield_tents.setEditable(false);
+		textfield_huts.setEditable(false);
+		textfield_luxuryhuts.setEditable(false);
+//		panel_caravanField.setLayout(new GridLayout(2,1));
+//		panel_tentField.setLayout(new GridLayout(2,1));
+//		panel_hutField.setLayout(new GridLayout(2,1));
+//		panel_luxuryhutField.setLayout(new GridLayout(2,1));
+		panel_caravanField.add(textfield_caravans);
+		panel_tentField.add(textfield_tents);
+		panel_hutField.add(textfield_huts);
+		panel_luxuryhutField.add(textfield_luxuryhuts);
+	}
+	
+	
 	
 //	public void setViewLogin(){
 //		panel.setBackground(Color.WHITE);
