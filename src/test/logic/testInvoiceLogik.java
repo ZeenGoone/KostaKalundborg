@@ -9,7 +9,6 @@ import entity.persons.Customer;
 
 public class testInvoiceLogik {
 
-	@SuppressWarnings("deprecation")
 	@Test
 	public void test() {
 		InvoiceLogic IL = new InvoiceLogic();
