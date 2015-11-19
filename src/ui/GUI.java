@@ -3,6 +3,8 @@ package ui;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -54,11 +56,12 @@ public class GUI extends JFrame{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	public void setCaravanList(ArrayList<Integer> caravans) {
-		panel_caravanList.setLayout(new GridLayout(caravans.size(),15));
+		panel_caravanList.setLayout(new GridLayout(caravans.size(),2));
 		caravanButtons = new ArrayList<JButton>();
 		for (int index:caravans){ 
 			JButton temp = new JButton(Integer.toString(index));
 			temp.setBackground(Color.decode("#208208"));
+			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
             temp.setOpaque(true);
 			caravanButtons.add(temp);
@@ -71,6 +74,7 @@ public class GUI extends JFrame{
 		for (int index:tents){ 
 			JButton temp = new JButton(Integer.toString(index));
 			temp.setBackground(Color.decode("#082082"));
+			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
             temp.setOpaque(true);
 			tentButtons.add(temp);
@@ -96,6 +100,7 @@ public class GUI extends JFrame{
 		for (int index:luxuryhuts){ 
 			JButton temp = new JButton(Integer.toString(index));
 			temp.setBackground(Color.decode("#9b394c"));
+			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(true);
             temp.setOpaque(true);
 			luxuryhutButtons.add(temp);
@@ -116,6 +121,13 @@ public class GUI extends JFrame{
 		setVisible(true);
 	}
 	public void before() {
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+	    c.ipady = 40;      
+	    c.weightx = 0.0;
+	    c.gridwidth = 3;
+	    c.gridx = 0;
+	    c.gridy = 1;
 		textfield_caravans.setFont(font_titles);
 		textfield_tents.setFont(font_titles);
 		textfield_huts.setFont(font_titles);
@@ -124,14 +136,14 @@ public class GUI extends JFrame{
 		textfield_tents.setEditable(false);
 		textfield_huts.setEditable(false);
 		textfield_luxuryhuts.setEditable(false);
-//		panel_caravanField.setLayout(new GridLayout(2,1));
-//		panel_tentField.setLayout(new GridLayout(2,1));
-//		panel_hutField.setLayout(new GridLayout(2,1));
-//		panel_luxuryhutField.setLayout(new GridLayout(2,1));
-		panel_caravanField.add(textfield_caravans);
-		panel_tentField.add(textfield_tents);
-		panel_hutField.add(textfield_huts);
-		panel_luxuryhutField.add(textfield_luxuryhuts);
+		panel_caravanField.setLayout(new GridBagLayout());
+		panel_tentField.setLayout(new GridBagLayout());
+		panel_hutField.setLayout(new GridBagLayout());
+		panel_luxuryhutField.setLayout(new GridBagLayout());
+		panel_caravanField.add(textfield_caravans, c);
+		panel_tentField.add(textfield_tents, c);
+		panel_hutField.add(textfield_huts, c);
+		panel_luxuryhutField.add(textfield_luxuryhuts, c);
 	}
 	
 	
