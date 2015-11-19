@@ -65,7 +65,7 @@ public class GUI extends JFrame{
 			temp.setBackground(Color.decode(color_caravan));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
-            temp.setOpaque(true);
+//            temp.setOpaque(true);
 			caravanButtons.add(temp);
 			}
 		for (JButton temp: caravanButtons){panel_caravanList.add(temp);}
@@ -78,7 +78,7 @@ public class GUI extends JFrame{
 			temp.setBackground(Color.decode(color_tent));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
-            temp.setOpaque(true);
+//            temp.setOpaque(true);
 			tentButtons.add(temp);
 			}
 		for (JButton temp: tentButtons){panel_tentList.add(temp);}
@@ -91,7 +91,7 @@ public class GUI extends JFrame{
 			temp.setBackground(Color.decode(color_hut));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
-            temp.setOpaque(true);
+//            temp.setOpaque(true);
 			hutButtons.add(temp);
 			}
 		for (JButton temp: hutButtons){panel_hutList.add(temp);}
@@ -104,7 +104,7 @@ public class GUI extends JFrame{
 			temp.setBackground(Color.decode(color_luxuryhut));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(true);
-            temp.setOpaque(true);
+//            temp.setOpaque(true);
 			luxuryhutButtons.add(temp);
 			}
 		for (JButton temp: luxuryhutButtons){panel_luxuryhutList.add(temp);}
