@@ -16,7 +16,7 @@ public class GUIController {
 		ArrayList<Tenancy> huts = new ArrayList<Tenancy>();
 		ArrayList<Tenancy> luxuryhuts = new ArrayList<Tenancy>();
 		for (int i=0; i<10; i++){caravans.add(new Caravan(i));}
-		for (int i=10; i<20; i++){tents.add(new Tent(i));}
+		for (int i=10; i<50; i++){tents.add(new Tent(i));}
 		for (int i=20; i<30; i++){huts.add(new Hut(i));}
 		for (int i=30; i<40; i++){luxuryhuts.add(new LuxuryHut(i));}
 		GUI GUI = new GUI();
