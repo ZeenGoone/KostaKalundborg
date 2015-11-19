@@ -39,6 +39,10 @@ public class GUI extends JFrame{
 	ArrayList<JButton> luxuryhutButtons;
 	Font font_titles = new Font(Font.DIALOG, Font.BOLD, 20);
 	Font font_buttons = new Font("Serif", Font.BOLD, 15);
+	String color_caravan = "#208208";
+	String color_tent = "#082082";
+	String color_hut = "#820820";
+	String color_luxuryhut = "#9b394c";
 	
 	
 	JButton button1 = new JButton("Make Reservation");
@@ -49,16 +53,16 @@ public class GUI extends JFrame{
 	JTextField textfield_password = new JTextField("password");
 	public GUI() {
 		super("Kosta Kalundborg");
-		setSize(1200, 700);
+		setSize(1300, 700);
 		setResizable(false);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	public void setCaravanList(ArrayList<Integer> caravans) {
-		panel_caravanList.setLayout(new GridLayout(caravans.size()/4,caravans.size()));
+		panel_caravanList.setLayout(new GridLayout(caravans.size()/3,caravans.size()));
 		caravanButtons = new ArrayList<JButton>();
 		for (int index:caravans){ 
 			JButton temp = new JButton(Integer.toString(index));
-			temp.setBackground(Color.decode("#208208"));
+			temp.setBackground(Color.decode(color_caravan));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
             temp.setOpaque(true);
@@ -67,11 +71,11 @@ public class GUI extends JFrame{
 		for (JButton temp: caravanButtons){panel_caravanList.add(temp);}
 	}
 	public void setTentList(ArrayList<Integer> tents) {
-		panel_tentList.setLayout(new GridLayout(tents.size()/4,tents.size()));
+		panel_tentList.setLayout(new GridLayout(tents.size()/3,tents.size()));
 		tentButtons = new ArrayList<JButton>();
 		for (int index:tents){ 
 			JButton temp = new JButton(Integer.toString(index));
-			temp.setBackground(Color.decode("#082082"));
+			temp.setBackground(Color.decode(color_tent));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
             temp.setOpaque(true);
@@ -80,11 +84,11 @@ public class GUI extends JFrame{
 		for (JButton temp: tentButtons){panel_tentList.add(temp);}
 	}
 	public void setHutList(ArrayList<Integer> huts) {
-		panel_hutList.setLayout(new GridLayout(huts.size()/4,huts.size()));
+		panel_hutList.setLayout(new GridLayout(huts.size()/3,huts.size()));
 		hutButtons = new ArrayList<JButton>();
 		for (int index:huts){ 
 			JButton temp = new JButton(Integer.toString(index));
-			temp.setBackground(Color.decode("#820820"));
+			temp.setBackground(Color.decode(color_hut));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(false);
             temp.setOpaque(true);
@@ -93,11 +97,11 @@ public class GUI extends JFrame{
 		for (JButton temp: hutButtons){panel_hutList.add(temp);}
 	}
 	public void setLuxuryhutList(ArrayList<Integer> luxuryhuts) {
-		panel_luxuryhutList.setLayout(new GridLayout(luxuryhuts.size()/4,luxuryhuts.size()));
+		panel_luxuryhutList.setLayout(new GridLayout(luxuryhuts.size()/3,luxuryhuts.size()));
 		luxuryhutButtons = new ArrayList<JButton>();
 		for (int index:luxuryhuts){ 
 			JButton temp = new JButton(Integer.toString(index));
-			temp.setBackground(Color.decode("#9b394c"));
+			temp.setBackground(Color.decode(color_luxuryhut));
 			temp.setFont(font_buttons);
 			temp.setContentAreaFilled(true);
             temp.setOpaque(true);
@@ -110,13 +114,14 @@ public class GUI extends JFrame{
 		panel_tentField.add(panel_tentList);
 		panel_hutField.add(panel_hutList);
 		panel_luxuryhutField.add(panel_luxuryhutList);
+		panel_mainBottom.setAlignmentY(BOTTOM_ALIGNMENT);
+		panel_mainBottom.setAlignmentX(CENTER_ALIGNMENT);
 		panel_mainBottom.setLayout(new FlowLayout());
-		panel_mainBottom.setSize(1000, 500);
 		panel_mainBottom.add(panel_caravanField);
 		panel_mainBottom.add(panel_tentField);
 		panel_mainBottom.add(panel_hutField);
 		panel_mainBottom.add(panel_luxuryhutField);
-		panel.setSize(1200, 700);
+		panel.setMaximumSize(new Dimension(1200, 700));
 		panel.add(panel_mainTop);
 		panel.add(panel_mainBottom);
 		add(panel);
@@ -135,6 +140,10 @@ public class GUI extends JFrame{
 		panel_tentField.setLayout(new BoxLayout(panel_tentField, BoxLayout.Y_AXIS));
 		panel_hutField.setLayout(new BoxLayout(panel_hutField, BoxLayout.Y_AXIS));
 		panel_luxuryhutField.setLayout(new BoxLayout(panel_luxuryhutField, BoxLayout.Y_AXIS));
+		panel_caravanField.setAlignmentY(TOP_ALIGNMENT);
+		panel_tentField.setAlignmentY(TOP_ALIGNMENT);
+		panel_hutField.setAlignmentY(TOP_ALIGNMENT);
+		panel_luxuryhutField.setAlignmentY(TOP_ALIGNMENT);
 		panel_caravanField.add(textfield_caravans);
 		panel_tentField.add(textfield_tents);
 		panel_hutField.add(textfield_huts);
