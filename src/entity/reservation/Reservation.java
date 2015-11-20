@@ -7,10 +7,10 @@ import entity.persons.Customer;
 import entity.tenancy.Tenancy;
 
 public class Reservation {
-	public Customer customer;
-	public ArrayList<Tenancy> tenancies;
-	public Date start_date;
-	public Date end_date;
+	protected Customer customer;
+	protected ArrayList<Tenancy> tenancies;
+	protected Date start_date;
+	protected Date end_date;
 	
 	public Reservation(Customer customer, Date start_date, Date end_date){
 		this.customer = customer;
