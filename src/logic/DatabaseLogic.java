@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
@@ -11,6 +12,8 @@ import java.io.IOException;
 import entity.persons.CampChief;
 import entity.persons.Customer;
 import entity.persons.Employee;
+import entity.persons.Expense;
+import entity.persons.Invoice;
 import entity.persons.Receptionist;
 import entity.tenancy.Caravan;
 import entity.tenancy.Hut;
@@ -20,7 +23,9 @@ import entity.tenancy.Tent;
 public class DatabaseLogic {
 	private static ArrayList<Customer> customerBase;
 	private static ArrayList<Employee> employeeBase;
-
+	private static ArrayList<Invoice> invoiceBase;
+	private static String highseason_start = "12/06";
+	private static String highseason_end = "16/08";
 	public DatabaseLogic() {
 
 	}
@@ -62,6 +67,12 @@ public class DatabaseLogic {
 			writeFile("employee");
 		}
 	}
+	public static String getHighseasonStart() {
+		return highseason_start;
+	}
+	public static String getHighseasonEnd() {
+		return highseason_end;
+	}
 
 	public static ArrayList<Customer> getCustomers() {
 		// Read customerdatabase from file and return it
@@ -73,6 +84,10 @@ public class DatabaseLogic {
 		// Sort receptionist from Employee database and return campchiefs
 		employeeBase = readFile("employeeBase");
 		return employeeBase;
+	}
+	public static ArrayList<Invoice> getInvoiceList() {
+		invoiceBase = readFile("invoice");
+		return invoiceBase;
 	}
 
 	private static ArrayList readFile(String type) {
@@ -120,6 +135,9 @@ public class DatabaseLogic {
 		case "employee":
 			tempDB.add(addEmployee(tempDBspot));
 			break;
+		case "invoice":
+			tempDB.add(addInvoice(tempDBspot));
+			break;
 		}
 	}
 
@@ -136,6 +154,16 @@ public class DatabaseLogic {
 			return new CampChief(s[1], s[0], s[2]);
 		else
 			return null;
+	}
+	private static Invoice addInvoice(String[] s) {
+		Invoice invoice = new Invoice(s[2], s[3]);
+		// To do
+		
+		ArrayList<Expense> expenseList = readFile("expense");
+		for (Expense e: expenseList) {
+			invoice.registerExpense(e.getDescribtion(), e.getPrice(), e.getNumberofitems());
+		}
+		return invoice;
 	}
 
 	private static void writeFile(String type) {
