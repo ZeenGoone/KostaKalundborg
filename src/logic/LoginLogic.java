@@ -13,7 +13,7 @@ public class LoginLogic {
 
 	public Employee verifyUser(Employee client){
 		boolean output = false;
-		for (Employee e:dataLogic.employeeBase){
+		for (Employee e:dataLogic.getEmployee()){
 			if (client.getPhonenumber().equals(e.getPhonenumber()) && client.getPassword().equals(e.getPassword())) return e;
 		}
 		return null;

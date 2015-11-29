@@ -10,8 +10,10 @@ public class MainController {
 	
 	public static void main(String[] args) {
 		
-		
-		
+	}
+	
+	private void init() {
+		createObjects();
 	}
 	
 	private void createObjects() {

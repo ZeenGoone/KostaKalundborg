@@ -18,10 +18,8 @@ import entity.tenancy.LuxuryHut;
 import entity.tenancy.Tent;
 
 public class DatabaseLogic {
-	static ArrayList<Customer> customerBase;
-	static ArrayList<CampChief> campchiefBase;
-	static ArrayList<Receptionist> receptionistBase;
-	static ArrayList<Employee> employeeBase;
+	private static ArrayList<Customer> customerBase;
+	private static ArrayList<Employee> employeeBase;
 
 	public DatabaseLogic() {
 
@@ -74,13 +72,6 @@ public class DatabaseLogic {
 	public static ArrayList<Employee> getEmployee() {
 		// Sort receptionist from Employee database and return campchiefs
 		employeeBase = readFile("employeeBase");
-		ArrayList<Employee> tempDB = employeeBase;
-		for (Employee e : tempDB) {
-			if (e instanceof Receptionist) {
-				tempDB.remove(e);
-			}
-		}
-		employeeBase = tempDB;
 		return employeeBase;
 	}
 
