@@ -18,14 +18,15 @@ public class Invoice {
 	public void registerExpense(String describtion, double price, int numberofitems) {
 		payments.add(new Expense(describtion, price, numberofitems));
 	}
-	public void registerTenancyExpense(String describtion, double price_offseason, double price_highseason, int numberofitems) {
-		double price = 0;
-		double offseasondays = 0;
-		double highseasondays = 0;
-		String highseason_start = DatabaseLogic.getHighseasonStart();
-		String highseason_end = DatabaseLogic.getHighseasonEnd();
-		
+	public void registerTenancyExpense(String describtion, double price_offseason, double price_highseason, 
+			int offseasondays, int highseasondays, int numberofitems) {
+		payments.add(new Expense(describtion+"\n (Lavsæson)", price_offseason*offseasondays, numberofitems));
+		payments.add(new Expense(describtion+"\n (Højsæson)", price_highseason*highseasondays, numberofitems));
 		}
+	public void registerTenancyExpense(String describtion, double price, int days, int numberofitems, String season){
+		payments.add(new Expense(describtion+"\n ("+season+")", price*days, numberofitems));
+	}
+	
 	
 	public ArrayList<Expense> getPayments() {
 		return payments;

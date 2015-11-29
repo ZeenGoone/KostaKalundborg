@@ -24,8 +24,8 @@ public class DatabaseLogic {
 	private static ArrayList<Customer> customerBase;
 	private static ArrayList<Employee> employeeBase;
 	private static ArrayList<Invoice> invoiceBase;
-	private static String highseason_start = "12/06";
-	private static String highseason_end = "16/08";
+	private static Date highseason_start = new Date(2015,6,12);
+	private static Date highseason_end = new Date(2015,8,16);
 	public DatabaseLogic() {
 
 	}
@@ -157,13 +157,44 @@ public class DatabaseLogic {
 	}
 	private static Invoice addInvoice(String[] s) {
 		Invoice invoice = new Invoice(s[2], s[3]);
-		// To do
-		
+		int[] seasondays = getSeasondays(invoice);
+		if (seasondays[0]==0) {
+			
+		}
 		ArrayList<Expense> expenseList = readFile("expense");
 		for (Expense e: expenseList) {
 			invoice.registerExpense(e.getDescribtion(), e.getPrice(), e.getNumberofitems());
 		}
 		return invoice;
+	}
+	private static int[] getSeasondays(Invoice invoice) {
+		Date startdate = invoice.getStartdate();
+		Date enddate = invoice.getEnddate();
+		int offseasondays = 0;
+		int highseasondays = 0;
+		if (startdate.before(highseason_start) && startdate.before(highseason_start))
+			offseasondays += daysBetween(startdate, enddate);
+		else if (startdate.after(highseason_end))
+			offseasondays += daysBetween(startdate, enddate);
+		else if (startdate.after(highseason_start) && enddate.before(highseason_end))
+			highseasondays += daysBetween(startdate, enddate);
+		else if (startdate.before(highseason_start) && enddate.after(highseason_end)) {
+			offseasondays += daysBetween(startdate, highseason_start);
+			highseasondays += daysBetween(highseason_start, highseason_end);
+			offseasondays += daysBetween(highseason_end, enddate);
+		} else if (startdate.before(highseason_start) && enddate.after(highseason_start)) {
+			offseasondays += daysBetween(startdate, highseason_start);
+			highseasondays += daysBetween(highseason_start, enddate);
+		} else if (startdate.after(highseason_start) && startdate.before(highseason_end) && enddate.after(highseason_end)) {
+			offseasondays += daysBetween(startdate, highseason_end);
+			highseasondays += daysBetween(highseason_end, enddate);
+		}
+		int[] output = {offseasondays, highseasondays};
+		return output;
+	}
+	
+	private static int daysBetween(Date d1, Date d2){
+		 return (int)( (d2.getTime() - d1.getTime()) / (1000 * 60 * 60 * 24));
 	}
 
 	private static void writeFile(String type) {
