@@ -1,0 +1,6 @@
+Customer Format: phonenumber; name;
+Employee Format: phonenumber; name; password; privileges
+Invoice Format: invoice_id; customer_phonenumber; 'startdate'-'enddate'
+Expense Format: expense_id; invoice_id; price_id; numberofitems
+Price Format: price_id; price_offseason; price_highseason; describtion
+Tenancy Format: //
