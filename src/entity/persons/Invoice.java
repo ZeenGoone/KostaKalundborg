@@ -26,6 +26,9 @@ public class Invoice {
 	public void registerTenancyExpense(String describtion, double price, int days, int numberofitems, String season){
 		payments.add(new Expense(describtion+"\n ("+season+")", price*days, numberofitems));
 	}
+	public void registerTenancyExpense(String describtion, double price, int days, int numberofitems){
+		payments.add(new Expense(describtion, price*days, numberofitems));
+	}
 	
 	
 	public ArrayList<Expense> getPayments() {

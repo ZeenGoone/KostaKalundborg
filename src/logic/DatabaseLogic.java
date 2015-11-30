@@ -24,6 +24,8 @@ public class DatabaseLogic {
 	private static ArrayList<Customer> customerBase;
 	private static ArrayList<Employee> employeeBase;
 	private static ArrayList<Invoice> invoiceBase;
+	private static ArrayList<String[]> expenseList;
+	private static ArrayList<String[]> priceList;
 	private static Date highseason_start = new Date(2015,6,12);
 	private static Date highseason_end = new Date(2015,8,16);
 	public DatabaseLogic() {
@@ -67,10 +69,10 @@ public class DatabaseLogic {
 			writeFile("employee");
 		}
 	}
-	public static String getHighseasonStart() {
+	public static Date getHighseasonStart() {
 		return highseason_start;
 	}
-	public static String getHighseasonEnd() {
+	public static Date getHighseasonEnd() {
 		return highseason_end;
 	}
 
@@ -138,6 +140,12 @@ public class DatabaseLogic {
 		case "invoice":
 			tempDB.add(addInvoice(tempDBspot));
 			break;
+		case "expense":
+			tempDB.add(tempDBspot);
+			break;
+		case "price":
+			tempDB.add(tempDBspot);
+			break;
 		}
 	}
 
@@ -158,14 +166,26 @@ public class DatabaseLogic {
 	private static Invoice addInvoice(String[] s) {
 		Invoice invoice = new Invoice(s[2], s[3]);
 		int[] seasondays = getSeasondays(invoice);
-		if (seasondays[0]==0) {
-			
+		expenseList = readFile("expense");
+		priceList = readFile("price");
+		for (String[] ex:expenseList){
+			String[] priceFile = getPrice(ex[2]);
+		if (ex[2].charAt(2)=='1') invoice.registerExpense(priceFile[3], Double.parseDouble(priceFile[1]), Integer.parseInt(ex[3]));
+		else if (ex[2].charAt(2)=='0') {
+			if (priceFile[1].equals(priceFile[2])) invoice.registerTenancyExpense(priceFile[3], Double.parseDouble(priceFile[1]), 
+					seasondays[0]+seasondays[1], Integer.parseInt(ex[3]));
+			else if (seasondays[0]==0) invoice.registerTenancyExpense(priceFile[3], Double.parseDouble(priceFile[2]), seasondays[1], Integer.parseInt(ex[3]), "Højsæson");
+			else if (seasondays[1]==0) invoice.registerTenancyExpense(priceFile[3], Double.parseDouble(priceFile[1]), seasondays[0], Integer.parseInt(ex[3]), "Lavsæson");
+			else invoice.registerTenancyExpense(priceFile[3], Double.parseDouble(priceFile[1]), Double.parseDouble(priceFile[2]), seasondays[0], seasondays[1], Integer.parseInt(ex[3]));
 		}
-		ArrayList<Expense> expenseList = readFile("expense");
-		for (Expense e: expenseList) {
-			invoice.registerExpense(e.getDescribtion(), e.getPrice(), e.getNumberofitems());
 		}
 		return invoice;
+	}
+	private static String[] getPrice(String price_id){
+		for (int i=0; i<priceList.size(); i++) {
+			if (priceList.get(i)[0].equals(price_id)) return priceList.get(i);
+		}
+		return null;
 	}
 	private static int[] getSeasondays(Invoice invoice) {
 		Date startdate = invoice.getStartdate();
@@ -279,15 +299,16 @@ public class DatabaseLogic {
 		switch (type) {
 		case "customer":
 			return "Database/customerBase.db";
-		case "campchief":
+		case "employee":
 			return "Database/employeeBase.db";
-		case "receptionist":
-			return "Database/employeeBase.db";
-		case "hut":
-		case "luxuryhut":
-		case "tent":
-		case "caravan":
+		case "tenancy":
 			return "Database/tenancyBase.db";
+		case "price":
+			return "Database/priceBase.db";
+		case "invoice":
+			return "Database/invoiceBase.db";
+		case "expense":
+			return "Database/expenseBase.db";
 		}
 		return null;
 	}
