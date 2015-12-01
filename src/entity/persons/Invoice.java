@@ -29,7 +29,22 @@ public class Invoice {
 	public void registerTenancyExpense(String describtion, double price, int days, int numberofitems){
 		payments.add(new Expense(describtion, price*days, numberofitems));
 	}
-	
+	public String print(Customer customer) {
+		String invoiceFinal = "";
+		for (int i=0; getPayments().size()>i; i++) {
+			invoiceFinal += (i+1)+": "+getPayments().get(i).toString()+"kr." + "\n";
+		}
+		return "Customer: "+customer.getName()+"\t Phonenumber: "+customer.getPhonenumber()+
+				"\n"+invoiceFinal+"\n \n"+
+				"Total price: "+getTotal();
+	}
+	public double getTotal() {
+		double price=0;
+		for (int i=0; getPayments().size()>i; i++) {
+			price += getPrice(i);
+		}
+		return price;
+	}
 	
 	public ArrayList<Expense> getPayments() {
 		return payments;
